@@ -1,7 +1,9 @@
 package com.myst3ry.bookfinder.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -9,6 +11,7 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.myst3ry.bookfinder.BookFinderApp;
 import com.myst3ry.bookfinder.R;
@@ -47,6 +50,7 @@ public final class MainActivity extends BaseActivity {
 
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         booksRecyclerView.setLayoutManager(linearLayoutManager);
+        booksRecyclerView.setWillNotDraw(false);
         booksRecyclerView.setAdapter(adapter);
     }
 
@@ -87,23 +91,34 @@ public final class MainActivity extends BaseActivity {
         });
     }
 
+    @SuppressLint("StringFormatInvalid")
     private void getBooksWithQuery(final String queryText) {
         if (!TextUtils.isEmpty(queryText)) {
             disposables.add(googleApi.getBooksWithQuery(queryText, googleApi.API_KEY)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .cache()
-                    .subscribe((response) -> updateUI(response.getItems()),
-                            error -> { /*handle error*/ }));
+                    .subscribe((response) -> {
+                                final List<Book> booksList = response.getItems();
+                                if (booksList == null) {
+                                    Toast.makeText(this,
+                                            String.format(getString(R.string.toast_books_not_found), queryText),
+                                            Toast.LENGTH_SHORT).show();
+                                } else {
+                                    updateUI(response.getItems());
+                                }
+                            },
+                            error -> {
+                            }));
         }
     }
 
-    private void updateUI(final List<Book> books) {
+    private void updateUI(@NonNull final List<Book> books) {
         if (textEmpty != null) {
-            textEmpty.setVisibility((books != null && !books.isEmpty()) ? View.GONE : View.VISIBLE);
+            textEmpty.setVisibility(!books.isEmpty() ? View.GONE : View.VISIBLE);
         }
 
-        if (adapter != null && books != null) {
+        if (adapter != null) {
             adapter.setBooks(books);
         }
     }

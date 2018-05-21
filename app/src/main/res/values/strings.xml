@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">BookFinder</string>
+    <string name="main_title">Find Your Book</string>
 
-    <string name="search_hint">Search book…</string>
-    <string name="action_search">Search</string>
-    <string name="text_empty">No books to show</string>
+    <string name="search_hint">Search…</string>
+    <string name="text_empty">Nothing to show</string>
+    <string name="text_perform_search">Perform your search to find books that you are interested in</string>
+    <string name="toast_books_not_found">Books with query \"%s\" not found</string>
 
-    <string name="book_information">Book info</string>
+    <string name="action_search">Search book</string>
+    <string name="action_share">Share book</string>
+
     <string name="book_cover_desc">Book cover</string>
+    <string name="book_ratings_count">(%d)</string>
+    <string name="book_average_rating">\u2605 %.1f</string>
+    <string name="book_retail_price">%.2f %s</string>
+    <string name="book_not_for_sale">NOT FOR SALE</string>
 
 </resources>

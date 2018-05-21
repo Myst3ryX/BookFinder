@@ -1,9 +1,9 @@
 <resources>
 
     <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryDark">@color/color_primary_dark</item>
-        <item name="colorAccent">@color/color_accent</item>
+        <item name="colorPrimary">@color/color_material_blue_gray_500</item>
+        <item name="colorPrimaryDark">@color/color_material_blue_gray_700</item>
+        <item name="colorAccent">@color/color_material_gray_500</item>
     </style>
 
 </resources>

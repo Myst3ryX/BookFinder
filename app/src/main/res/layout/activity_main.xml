@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_background_main"
     android:fitsSystemWindows="true"
     tools:context=".ui.activity.MainActivity">
 
@@ -13,7 +14,10 @@
         android:id="@+id/text_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="@dimen/empty_text_margin_top"
+        android:layout_marginStart="@dimen/empty_text_margin_horizontal"
+        android:layout_marginEnd="@dimen/empty_text_margin_horizontal"
+        android:layout_marginBottom="@dimen/empty_text_margin_bottom"
         android:text="@string/text_empty"
         android:textColor="@color/color_text_main"
         android:layout_gravity="center_horizontal" />
@@ -23,7 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fadeScrollbars="true"
+        android:overScrollMode="never"
         android:scrollbars="vertical"
+        android:paddingTop="@dimen/rec_view_padding_vertical"
+        android:paddingBottom="@dimen/rec_view_padding_vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>
