@@ -8,19 +8,19 @@
     android:layout_marginEnd="@dimen/card_view_margin_horizontal"
     android:layout_marginStart="@dimen/card_view_margin_horizontal"
     android:layout_marginTop="@dimen/card_view_margin_vertical"
-    card_view:cardBackgroundColor="@color/color_background_card"
+    card_view:cardBackgroundColor="@color/color_background_secondary"
     card_view:cardCornerRadius="@dimen/card_view_radius"
     card_view:cardElevation="@dimen/card_view_elevation">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/book_cover_height">
+        android:minHeight="@dimen/book_small_cover_height">
 
         <ImageView
             android:id="@+id/book_cover_small"
-            android:layout_width="@dimen/book_cover_width"
-            android:layout_height="@dimen/book_cover_height"
+            android:layout_width="@dimen/book_small_cover_width"
+            android:layout_height="@dimen/book_small_cover_height"
             android:layout_alignParentStart="true"
             android:contentDescription="@string/book_cover_desc" />
 
@@ -28,15 +28,15 @@
             android:id="@+id/book_published_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/book_item_margin_xmedium"
-            android:layout_marginEnd="@dimen/book_item_margin_xlarge"
-            android:layout_marginStart="@dimen/book_item_margin_xlarge"
-            android:layout_marginBottom="@dimen/book_item_margin_small"
+            android:layout_marginTop="@dimen/text_margin_xmedium"
+            android:layout_marginEnd="@dimen/text_margin_xlarge"
+            android:layout_marginStart="@dimen/text_margin_xlarge"
+            android:layout_marginBottom="@dimen/text_margin_small"
             android:layout_alignParentTop="true"
             android:textStyle="normal"
             android:layout_toEndOf="@+id/book_cover_small"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="@integer/lines_one"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/color_text_sub" />
 
@@ -46,11 +46,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/book_published_year"
             android:layout_toEndOf="@+id/book_cover_small"
-            android:layout_marginEnd="@dimen/book_item_margin_xlarge"
-            android:layout_marginStart="@dimen/book_item_margin_xlarge"
-            android:layout_marginBottom="@dimen/book_item_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_xlarge"
+            android:layout_marginStart="@dimen/text_margin_xlarge"
+            android:layout_marginBottom="@dimen/text_margin_small"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="@integer/lines_one"
             android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/color_text_main" />
@@ -61,12 +61,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/book_title"
             android:layout_toEndOf="@+id/book_cover_small"
-            android:layout_marginEnd="@dimen/book_item_margin_xlarge"
-            android:layout_marginStart="@dimen/book_item_margin_xlarge"
-            android:layout_marginBottom="@dimen/book_item_margin_large"
+            android:layout_marginEnd="@dimen/text_margin_xlarge"
+            android:layout_marginStart="@dimen/text_margin_xlarge"
+            android:layout_marginBottom="@dimen/text_margin_large"
             android:textStyle="italic"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="@integer/lines_one"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/color_text_sub" />
 
@@ -74,13 +74,13 @@
             android:id="@+id/book_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/book_item_margin_xlarge"
-            android:layout_marginStart="@dimen/book_item_margin_xlarge"
-            android:layout_marginBottom="@dimen/book_item_margin_medium"
-            android:padding="@dimen/book_item_text_padding"
+            android:layout_marginEnd="@dimen/text_margin_xlarge"
+            android:layout_marginStart="@dimen/text_margin_xlarge"
+            android:layout_marginBottom="@dimen/text_margin_medium"
+            android:padding="@dimen/text_bordered_padding"
             android:layout_below="@+id/book_authors"
             android:layout_toEndOf="@+id/book_cover_small"
-            android:background="@drawable/text_border_standart"
+            android:background="@drawable/border_text_main"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/color_text_main" />
 
@@ -88,13 +88,13 @@
             android:id="@+id/book_price_retail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/book_item_margin_xlarge"
-            android:layout_marginStart="@dimen/book_item_margin_xlarge"
-            android:layout_marginBottom="@dimen/book_item_margin_medium"
+            android:layout_marginEnd="@dimen/text_margin_xlarge"
+            android:layout_marginStart="@dimen/text_margin_xlarge"
+            android:layout_marginBottom="@dimen/text_margin_medium"
             android:layout_below="@+id/book_authors"
-            android:padding="@dimen/book_item_text_padding"
+            android:padding="@dimen/text_bordered_padding"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/text_border_standart"
+            android:background="@drawable/border_text_main"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/color_text_main" />
 

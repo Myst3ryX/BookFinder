@@ -2,12 +2,14 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <solid android:color="@android:color/transparent" />
+    <solid android:color="@color/color_background_main" />
 
     <corners android:radius="@dimen/card_view_radius" />
 
     <stroke
-        android:width="@dimen/book_item_text_border_width"
-        android:color="@color/color_border"></stroke>
+        android:width="@dimen/text_border_width"
+        android:color="@color/color_border">
+
+    </stroke>
 
 </shape>

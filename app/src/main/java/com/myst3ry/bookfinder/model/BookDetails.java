@@ -24,9 +24,6 @@ public final class BookDetails {
     @SerializedName("description")
     private String description;
 
-    @SerializedName("readingModes")
-    private ReadingModes readingModes;
-
     @SerializedName("pageCount")
     private int pageCount;
 
@@ -39,17 +36,11 @@ public final class BookDetails {
     @SerializedName("ratingsCount")
     private int ratingsCount;
 
-    @SerializedName("maturityRating")
-    private String maturityRating;
-
     @SerializedName("imageLinks")
     private Covers covers;
 
     @SerializedName("language")
     private String language;
-
-    @SerializedName("previewLink")
-    private String previewLink;
 
     @SerializedName("infoLink")
     private String infoLink;
@@ -78,10 +69,6 @@ public final class BookDetails {
         return description;
     }
 
-    public ReadingModes getReadingModes() {
-        return readingModes;
-    }
-
     public int getPageCount() {
         return pageCount;
     }
@@ -98,10 +85,6 @@ public final class BookDetails {
         return ratingsCount;
     }
 
-    public String getMaturityRating() {
-        return maturityRating;
-    }
-
     public Covers getCovers() {
         return covers;
     }
@@ -110,67 +93,25 @@ public final class BookDetails {
         return language;
     }
 
-    public String getPreviewLink() {
-        return previewLink;
-    }
-
     public String getInfoLink() {
         return infoLink;
     }
 
-
-    public final class ReadingModes {
-
-        @SerializedName("image")
-        private boolean image;
-
-        @SerializedName("text")
-        private boolean text;
-
-        public boolean isImage() {
-            return image;
-        }
-
-        public boolean isText() {
-            return text;
-        }
-    }
 
     public final class Covers {
 
         @SerializedName("thumbnail")
         private String thumbnail;
 
-        @SerializedName("small")
-        private String small;
-
-        @SerializedName("medium")
-        private String medium;
-
         @SerializedName("large")
         private String large;
-
-        @SerializedName("extraLarge")
-        private String extraLarge;
 
         public String getThumbnail() {
             return thumbnail;
         }
 
-        public String getSmall() {
-            return small;
-        }
-
-        public String getMedium() {
-            return medium;
-        }
-
         public String getLarge() {
             return large;
-        }
-
-        public String getExtraLarge() {
-            return extraLarge;
         }
     }
 }

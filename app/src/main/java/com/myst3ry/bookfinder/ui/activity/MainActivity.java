@@ -1,15 +1,16 @@
 package com.myst3ry.bookfinder.ui.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,9 @@ public final class MainActivity extends BaseActivity {
     RecyclerView booksRecyclerView;
     @BindView(R.id.text_empty)
     TextView textEmpty;
+    @BindView(R.id.progress_bar)
+    ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,11 @@ public final class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         BookFinderApp.getNetworkComponent(this).inject(this);
         initAdapter();
+
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.main_title);
+        }
 
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         booksRecyclerView.setLayoutManager(linearLayoutManager);
@@ -84,38 +93,45 @@ public final class MainActivity extends BaseActivity {
     }
 
     private void initAdapter() {
-        adapter = new BooksAdapter((String bookId) -> {
+        adapter = new BooksAdapter((bookId, bookTitle) -> {
             final Intent intent = new Intent(MainActivity.this, BookDetailsActivity.class);
             intent.putExtra(BookDetailsActivity.EXTRA_BOOK_ID, bookId);
+            intent.putExtra(BookDetailsActivity.EXTRA_BOOK_TITLE, bookTitle);
             startActivity(intent);
         });
     }
 
-    @SuppressLint("StringFormatInvalid")
     private void getBooksWithQuery(final String queryText) {
         if (!TextUtils.isEmpty(queryText)) {
+            progressBar.setVisibility(adapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
             disposables.add(googleApi.getBooksWithQuery(queryText, googleApi.API_KEY)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .cache()
                     .subscribe((response) -> {
-                                final List<Book> booksList = response.getItems();
-                                if (booksList == null) {
-                                    Toast.makeText(this,
-                                            String.format(getString(R.string.toast_books_not_found), queryText),
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    updateUI(response.getItems());
-                                }
-                            },
-                            error -> {
-                            }));
+                        final List<Book> booksList = response.getItems();
+                        if (booksList == null) {
+                            Toast.makeText(this,
+                                    String.format(getString(R.string.toast_books_not_found), queryText),
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            updateUI(response.getItems());
+                        }
+                    }, error -> {
+                        Toast.makeText(this, String.format(getString(R.string.toast_error),
+                                error.getMessage()), Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
+                    }));
         }
     }
 
     private void updateUI(@NonNull final List<Book> books) {
         if (textEmpty != null) {
             textEmpty.setVisibility(!books.isEmpty() ? View.GONE : View.VISIBLE);
+        }
+
+        if (progressBar != null && progressBar.getVisibility() == View.VISIBLE) {
+            progressBar.setVisibility(View.GONE);
         }
 
         if (adapter != null) {

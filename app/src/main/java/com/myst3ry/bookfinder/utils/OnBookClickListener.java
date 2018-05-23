@@ -4,5 +4,5 @@ import android.support.annotation.NonNull;
 
 public interface OnBookClickListener {
 
-    void onBookClick(@NonNull String bookId);
+    void onBookClick(@NonNull final String bookId, final String bookTitle);
 }

@@ -1,9 +1,11 @@
 package com.myst3ry.bookfinder.network;
 
+import com.myst3ry.bookfinder.model.Book;
 import com.myst3ry.bookfinder.model.BooksList;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface GoogleApi {
@@ -15,7 +17,8 @@ public interface GoogleApi {
     Single<BooksList> getBooksWithQuery(@Query("q") final String query,
                                         @Query("key") final String key);
 
-//    @GET("volumes/{id}")
-//    Single<BooksList> getBookFullDetails(@Path("id") final String id, @Query("key") final String key);
+    @GET("volumes/{id}")
+    Single<Book> getBookFullDetails(@Path("id") final String id,
+                                    @Query("key") final String key);
 
 }

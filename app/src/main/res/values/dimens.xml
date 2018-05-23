@@ -3,24 +3,36 @@
 
     <dimen name="empty_text_margin_horizontal">16dp</dimen>
     <dimen name="empty_text_margin_bottom">16dp</dimen>
-    <dimen name="empty_text_margin_top">104dp</dimen>
+    <dimen name="empty_text_margin_top">88dp</dimen>
 
     <dimen name="rec_view_padding_vertical">4dp</dimen>
+    <dimen name="details_screen_padding">16dp</dimen>
 
     <dimen name="card_view_margin_horizontal">8dp</dimen>
     <dimen name="card_view_margin_vertical">4dp</dimen>
     <dimen name="card_view_elevation">3dp</dimen>
     <dimen name="card_view_radius">3dp</dimen>
 
-    <dimen name="book_cover_width">80dp</dimen>
-    <dimen name="book_cover_height">120dp</dimen>
-    <dimen name="book_item_margin_small">4dp</dimen>
-    <dimen name="book_item_margin_medium">8dp</dimen>
-    <dimen name="book_item_margin_xmedium">10dp</dimen>
-    <dimen name="book_item_margin_large">12dp</dimen>
-    <dimen name="book_item_margin_xlarge">16dp</dimen>
+    <dimen name="book_small_cover_width">80dp</dimen>
+    <dimen name="book_small_cover_height">120dp</dimen>
+    <dimen name="book_large_cover_width">160dp</dimen>
+    <dimen name="book_large_cover_height">240dp</dimen>
 
-    <dimen name="book_item_text_padding">5dp</dimen>
-    <dimen name="book_item_text_border_width">1dp</dimen>
+    <dimen name="text_margin_small">4dp</dimen>
+    <dimen name="text_margin_medium">8dp</dimen>
+    <dimen name="text_margin_xmedium">10dp</dimen>
+    <dimen name="text_margin_large">12dp</dimen>
+    <dimen name="text_margin_xlarge">16dp</dimen>
+
+    <dimen name="button_bordered_padding_horizontal">32dp</dimen>
+    <dimen name="button_bordered_padding_vertical">5dp</dimen>
+
+    <dimen name="text_bordered_padding">5dp</dimen>
+    <dimen name="text_border_width">1dp</dimen>
+    <dimen name="divider_border_height">1dp</dimen>
+
+    <integer name="lines_one">1</integer>
+    <integer name="lines_two">2</integer>
+    <integer name="lines_desc">40</integer>
 
 </resources>

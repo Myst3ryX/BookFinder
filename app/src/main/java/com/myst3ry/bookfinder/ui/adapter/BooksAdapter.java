@@ -15,6 +15,7 @@ import com.myst3ry.bookfinder.R;
 import com.myst3ry.bookfinder.model.Book;
 import com.myst3ry.bookfinder.network.GlideApp;
 import com.myst3ry.bookfinder.utils.OnBookClickListener;
+import com.myst3ry.bookfinder.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,17 +45,15 @@ public final class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHo
         final Book book = getBook(position);
         final Context context = holder.itemView.getContext();
 
-        if (book != null && book.getBookDetails() != null) {
-            final StringBuilder sb = new StringBuilder();
-
+        if (book != null) {
             final String thumbnailUrl = book.getBookDetails().getCovers() != null
                     ? book.getBookDetails().getCovers().getThumbnail() : null;
-            final String rating = String.format(context.getString(R.string.book_average_rating), book.getBookDetails().getAverageRating());
+            final String rating = String.format(context.getString(R.string.book_average_rating),
+                    book.getBookDetails().getAverageRating());
             final String published = book.getBookDetails().getPublishedDate() != null
                     ? book.getBookDetails().getPublishedDate().substring(0, 4) : null;
             final double price = book.getBookSaleDetails().getRetailPrice() != null
                     ? book.getBookSaleDetails().getRetailPrice().getAmount() : 0.0;
-            final List<String> authors = book.getBookDetails().getAuthors();
 
             GlideApp.with(context)
                     .load(thumbnailUrl)
@@ -67,20 +66,10 @@ public final class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHo
             holder.bookPublishedYear.setText(published);
             holder.bookTitle.setText(book.getBookDetails().getTitle());
             holder.bookRating.setText(rating);
-            holder.bookRetailPrice.setText(price != 0.0 ? String.format(context.getString(R.string.book_retail_price),
+            holder.bookAuthors.setText(StringUtils.getAuthorsString(book.getBookDetails().getAuthors()));
+            holder.bookRetailPrice.setText(price != 0.0 ? String.format(context.getString(R.string.book_price),
                     price, book.getBookSaleDetails().getRetailPrice().getCurrencyCode())
                     : context.getString(R.string.book_not_for_sale));
-
-            if (authors != null) {
-                for (int i = 0; i < authors.size(); i++) {
-                    sb.append(authors.get(i));
-                    if (i < authors.size() - 1) {
-                        sb.append(", ");
-                    }
-                }
-            }
-
-            holder.bookAuthors.setText(sb.toString());
         }
     }
 
@@ -125,8 +114,8 @@ public final class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHo
 
         @OnClick(R.id.book_card_container)
         public void onClick() {
-            final int position = getLayoutPosition();
-            onBookClickListener.onBookClick(getBook(position).getId());
+            final Book book = getBook(getLayoutPosition());
+            onBookClickListener.onBookClick(book.getId(), book.getBookDetails().getTitle());
         }
 
         BookHolder(View itemView) {

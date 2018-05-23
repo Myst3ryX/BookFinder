@@ -3,17 +3,26 @@
     <string name="main_title">Find Your Book</string>
 
     <string name="search_hint">Search…</string>
-    <string name="text_empty">Nothing to show</string>
-    <string name="text_perform_search">Perform your search to find books that you are interested in</string>
+    <string name="text_empty">Perform your search to find books</string>
+
     <string name="toast_books_not_found">Books with query \"%s\" not found</string>
+    <string name="toast_error">Error: %s</string>
 
     <string name="action_search">Search book</string>
     <string name="action_share">Share book</string>
 
     <string name="book_cover_desc">Book cover</string>
-    <string name="book_ratings_count">(%d)</string>
-    <string name="book_average_rating">\u2605 %.1f</string>
-    <string name="book_retail_price">%.2f %s</string>
     <string name="book_not_for_sale">NOT FOR SALE</string>
+
+    <string name="book_buy_button_text">Buy</string>
+    <string name="book_published_by">Published: %s %s</string>
+    <string name="book_page_count">Pages: %d</string>
+    <string name="book_description">Description:\n\n%s</string>
+    <string name="book_language">Language: %s</string>
+    <string name="language_russian">Russian</string>
+    <string name="language_english">English</string>
+
+    <string name="book_average_rating">\u2605 %.1f</string>
+    <string name="book_price">%.2f %s</string>
 
 </resources>
