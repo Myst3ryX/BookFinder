@@ -1,6 +1,7 @@
 package com.myst3ry.bookfinder.network;
 
 import com.myst3ry.bookfinder.BuildConfig;
+import com.myst3ry.bookfinder.utils.GoogleInterceptor;
 
 import javax.inject.Singleton;
 
@@ -22,6 +23,7 @@ public final class NetworkModule {
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(BuildConfig.DEBUG
                         ? HttpLoggingInterceptor.Level.BASIC
                         : HttpLoggingInterceptor.Level.NONE))
+                .addInterceptor(new GoogleInterceptor())
                 .build();
     }
 

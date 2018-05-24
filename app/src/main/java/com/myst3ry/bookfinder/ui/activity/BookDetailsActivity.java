@@ -124,11 +124,11 @@ public final class BookDetailsActivity extends BaseActivity {
     }
 
     private void getBookFullDetails(@NonNull final String bookId) {
-        progressBar.setVisibility(View.VISIBLE);
-        disposables.add(googleApi.getBookFullDetails(bookId, googleApi.API_KEY)
+        disposables.add(googleApi.getBookFullDetails(bookId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .cache()
+                .doOnSubscribe((subscribe) -> progressBar.setVisibility(View.VISIBLE))
                 .subscribe((response) -> {
                     if (response != null) {
                         updateUI(response);

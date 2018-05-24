@@ -103,14 +103,15 @@ public final class MainActivity extends BaseActivity {
 
     private void getBooksWithQuery(final String queryText) {
         if (!TextUtils.isEmpty(queryText)) {
-            progressBar.setVisibility(adapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
-            disposables.add(googleApi.getBooksWithQuery(queryText, googleApi.API_KEY)
+            disposables.add(googleApi.getBooksWithQuery(queryText)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .cache()
+                    .doOnSubscribe((subscribe) ->
+                            progressBar.setVisibility(adapter.getItemCount() == 0 ?
+                                    View.VISIBLE : View.GONE))
                     .subscribe((response) -> {
-                        final List<Book> booksList = response.getItems();
-                        if (booksList == null) {
+                        if (response.getItems() == null) {
                             Toast.makeText(this,
                                     String.format(getString(R.string.toast_books_not_found), queryText),
                                     Toast.LENGTH_SHORT).show();
@@ -126,6 +127,10 @@ public final class MainActivity extends BaseActivity {
     }
 
     private void updateUI(@NonNull final List<Book> books) {
+        if (adapter.getItemCount() != 0) {
+            booksRecyclerView.scrollToPosition(0);
+        }
+
         if (textEmpty != null) {
             textEmpty.setVisibility(!books.isEmpty() ? View.GONE : View.VISIBLE);
         }

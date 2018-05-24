@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">BookFinder</string>
+    <string name="main_title">Найди свою книгу</string>
+
+    <string name="search_hint">Поиск…</string>
+    <string name="text_empty">Выполните поиск, чтобы найти книги!</string>
+
+    <string name="toast_books_not_found">По запросу \"%s\" книг не найдено</string>
+    <string name="toast_error">Ошибка: %s</string>
+
+    <string name="action_search">Поиск книги</string>
+    <string name="action_share">Поделиться книгой</string>
+
+    <string name="book_cover_desc">Обложка книги</string>
+    <string name="book_not_for_sale">НЕТ В ПРОДАЖЕ</string>
+
+    <string name="book_buy_button_text">Купить</string>
+    <string name="book_published_by">Издатель: %s %s</string>
+    <string name="book_page_count">Страниц: %d</string>
+    <string name="book_description">Описание:\n\n%s</string>
+    <string name="book_language">Язык: %s</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_english">Английский</string>
+
+    <string name="book_average_rating">\u2605 %.1f</string>
+    <string name="book_price">%.2f %s</string>
+
+</resources>
