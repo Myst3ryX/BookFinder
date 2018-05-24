@@ -13,7 +13,9 @@ public interface GoogleApi {
     String API_BASE_URL = "https://www.googleapis.com/books/v1/";
 
     @GET("volumes")
-    Single<BooksList> getBooksWithQuery(@Query("q") final String query);
+    Single<BooksList> getBooksWithQuery(@Query("q") final String query,
+                                        @Query("maxResults") final int maxResults,
+                                        @Query("startIndex") final int startIndex);
 
     @GET("volumes/{id}")
     Single<Book> getBookFullDetails(@Path("id") final String id);

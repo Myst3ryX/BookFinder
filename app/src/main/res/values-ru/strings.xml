@@ -5,6 +5,7 @@
     <string name="search_hint">Поиск…</string>
     <string name="text_empty">Выполните поиск, чтобы найти книги!</string>
 
+    <string name="toast_books_found_count">Найдено: %d книг</string>
     <string name="toast_books_not_found">По запросу \"%s\" книг не найдено</string>
     <string name="toast_error">Ошибка: %s</string>
 

@@ -5,6 +5,7 @@
     <string name="search_hint">Search…</string>
     <string name="text_empty">Perform your search to find books</string>
 
+    <string name="toast_books_found_count">Found: %d books</string>
     <string name="toast_books_not_found">Books with query \"%s\" not found</string>
     <string name="toast_error">Error: %s</string>
 
