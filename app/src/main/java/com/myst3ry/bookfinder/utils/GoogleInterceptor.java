@@ -2,8 +2,6 @@ package com.myst3ry.bookfinder.utils;
 
 import android.support.annotation.NonNull;
 
-import com.myst3ry.bookfinder.BuildConfig;
-
 import java.io.IOException;
 
 import okhttp3.HttpUrl;
@@ -17,7 +15,7 @@ public final class GoogleInterceptor implements Interceptor {
     public Response intercept(@NonNull final Chain chain) throws IOException {
         final Request originalRequest = chain.request();
         final HttpUrl url = originalRequest.url().newBuilder()
-                .addQueryParameter("key", BuildConfig.KEY)
+                .addQueryParameter("key", "AIzaSyCE4vuEPvkzBTGTGeowN93KQcv5fecS7PU")
                 .build();
         return chain.proceed(originalRequest.newBuilder().url(url).build());
     }

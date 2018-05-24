@@ -2,7 +2,7 @@
     <string name="app_name">BookFinder</string>
     <string name="main_title">Find Your Book</string>
 
-    <string name="search_hint">Search…</string>
+    <string name="search_hint">Search book title or author…</string>
     <string name="text_empty">Perform your search to find books</string>
 
     <string name="toast_books_found_count">Found: %d books</string>

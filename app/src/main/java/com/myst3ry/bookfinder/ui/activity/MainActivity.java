@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -109,8 +108,7 @@ public final class MainActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        MenuItem item = menu.findItem(R.id.action_search);
-        searchView = (SearchView) item.getActionView();
+        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setQueryHint(getString(R.string.search_hint));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -147,9 +145,9 @@ public final class MainActivity extends BaseActivity {
                     .observeOn(AndroidSchedulers.mainThread())
                     .cache()
                     .doOnSubscribe((subscribe) -> {
-                        isLoading = true;
                         progressBar.setVisibility(adapter.getItemCount() == 0 ?
                                 View.VISIBLE : View.GONE);
+                        isLoading = true;
                     })
                     .subscribe((response) -> {
                         if (response.getItems() == null) {
@@ -160,7 +158,7 @@ public final class MainActivity extends BaseActivity {
                             totalBooks = response.getTotalBooksCount();
                             updateUI(response.getItems());
                         }
-                    }, error -> {
+                    }, (error) -> {
                         Toast.makeText(this, String.format(getString(R.string.toast_error),
                                 error.getMessage()), Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);

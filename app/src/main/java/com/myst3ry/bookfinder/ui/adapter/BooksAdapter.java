@@ -89,8 +89,9 @@ public final class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookHo
     }
 
     public void clear() {
+        final int count = getItemCount();
         books.clear();
-        notifyDataSetChanged();
+        notifyItemRangeRemoved(0, count);
     }
 
     private Book getBook(int position) {

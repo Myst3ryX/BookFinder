@@ -2,10 +2,10 @@
     <string name="app_name">BookFinder</string>
     <string name="main_title">Найди свою книгу</string>
 
-    <string name="search_hint">Поиск…</string>
+    <string name="search_hint">Поиск книги или автора…</string>
     <string name="text_empty">Выполните поиск, чтобы найти книги!</string>
 
-    <string name="toast_books_found_count">Найдено: %d книг</string>
+    <string name="toast_books_found_count">Найдено: %d позиций</string>
     <string name="toast_books_not_found">По запросу \"%s\" книг не найдено</string>
     <string name="toast_error">Ошибка: %s</string>
 

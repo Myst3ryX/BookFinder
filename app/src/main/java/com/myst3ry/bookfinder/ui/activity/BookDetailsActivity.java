@@ -133,7 +133,7 @@ public final class BookDetailsActivity extends BaseActivity {
                     if (response != null) {
                         updateUI(response);
                     }
-                }, error -> {
+                }, (error) -> {
                     Toast.makeText(this, String.format(getString(R.string.toast_error),
                             error.getMessage()), Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
@@ -190,7 +190,7 @@ public final class BookDetailsActivity extends BaseActivity {
         bookDescription.setText(String.format(getString(R.string.book_description),
                 StringUtils.reformatDescriptionString(description)));
 
-        //set visibility for dividers and fields with description or with border
+        //set visibility for dividers and fields with description/border
         bookDescription.setVisibility(description != null ? View.VISIBLE : View.GONE);
         bookLanguage.setVisibility(lang != null ? View.VISIBLE : View.GONE);
         bookPageCount.setVisibility(pages != 0 ? View.VISIBLE : View.GONE);

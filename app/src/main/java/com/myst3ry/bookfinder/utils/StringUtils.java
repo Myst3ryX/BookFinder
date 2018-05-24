@@ -20,7 +20,7 @@ public final class StringUtils {
         return sb.toString();
     }
 
-    //clear all tags from description
+    //clear all html tags from description
     public static String reformatDescriptionString(final String description) {
         return description != null ? description.replaceAll("<[^>]*>", "") : "";
     }
@@ -30,6 +30,6 @@ public final class StringUtils {
         if (categories == null) {
             return null;
         }
-        return categories.get(0).split("[/&]");
+        return categories.get(0).split("[/&,]");
     }
 }

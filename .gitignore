@@ -36,7 +36,6 @@ Thumbs.db
 # Gradle files
 .gradle
 gradle-app.setting
-gradle.properties
 
 # other stuff
 *.hprof
